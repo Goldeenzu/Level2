@@ -1,3 +1,6 @@
+package KnockOffDoddleJump;
+
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -16,7 +19,7 @@ public class GameWindow implements KeyListener, MouseMotionListener, MouseListen
 	static boolean downArrow;
 
 	public static void main(String[] args) {
-		GameWindow x = new GameWindow(700, 500, "game");
+		GameWindow x = new GameWindow(500, 700, "Knock Off Doodle Jump");
 		x.createWindow();
 	}
 
@@ -38,6 +41,7 @@ public class GameWindow implements KeyListener, MouseMotionListener, MouseListen
 		frame.addMouseListener(this);
 		frame.addMouseMotionListener(this);
 		panel.startGame();
+		frame.setBackground(Color.LIGHT_GRAY);
 	}
 
 	@Override
