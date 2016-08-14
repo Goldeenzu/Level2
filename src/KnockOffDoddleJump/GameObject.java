@@ -17,6 +17,7 @@ public class GameObject {
 
 	public void draw(Graphics g) {
 		g.fillRect(x, y, width, height);
+		g.fillRect(x, y, width, height);
 	}
 
 	public void update() {

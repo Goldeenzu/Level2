@@ -17,6 +17,7 @@ public class GameWindow implements KeyListener, MouseMotionListener, MouseListen
 	static boolean leftArrow;
 	static boolean upArrow;
 	static boolean downArrow;
+	private GamePanel panel;
 
 	public static void main(String[] args) {
 		GameWindow x = new GameWindow(500, 700, "Knock Off Doodle Jump");
@@ -32,7 +33,7 @@ public class GameWindow implements KeyListener, MouseMotionListener, MouseListen
 	public void createWindow() {
 		JFrame frame;
 		frame = new JFrame(title);
-		GamePanel panel = new GamePanel();
+		panel = new GamePanel();
 		frame.add(panel);
 		frame.setSize(width, height);
 		frame.setVisible(true);
@@ -84,6 +85,7 @@ public class GameWindow implements KeyListener, MouseMotionListener, MouseListen
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("Mouse Moved");
+		panel.mouseMoved(e.getX(), e.getY());
 	}
 
 	@Override

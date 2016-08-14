@@ -17,6 +17,7 @@ public class ImageObject extends GameObject {
 	}
 
 	public void draw(Graphics g) {
+
 		g.drawImage(image, x, y, width, height, null);
 	}
 
