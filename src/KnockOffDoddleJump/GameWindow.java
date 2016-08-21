@@ -42,7 +42,6 @@ public class GameWindow implements KeyListener, MouseMotionListener, MouseListen
 		frame.addMouseListener(this);
 		frame.addMouseMotionListener(this);
 		panel.startGame();
-		frame.setBackground(Color.LIGHT_GRAY);
 	}
 
 	@Override

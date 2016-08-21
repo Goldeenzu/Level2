@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -17,21 +18,33 @@ public class GamePanel extends JPanel implements ActionListener {
 	BufferedImage doge2Image;
 	ImageObject image;
 	ImageObject image2;
+	Random r;
 
 	Jumper J;
+	Platform P;
 
 	ArrayList<GameObject> objects = new ArrayList<GameObject>();
 
 	void intGameObjects() {
-		J = new Jumper(225, 500, 100, 100, dogeImage);
+		
+		J = new Jumper(225, 450, 100, 100, dogeImage);
 		objects.add(J);
+		P = new Platform(new Random().nextInt(401), 0, 100, 30, doge2Image);
+		objects.add(P);
+	}
+	public void platformMoved(int platformY){
+		P.y = platformY;
+		P.update();
+		if(platformY >= 700){
+			platformY = 0;
+		}
 	}
 
 	public void mouseMoved(int mouseX, int mouseY) {
 		J.x = mouseX - 50;
 		System.out.println(mouseX);
-		System.out.println(mouseY);
 	}
+	
 
 	public void paintComponent(Graphics g) {
 

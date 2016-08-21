@@ -22,18 +22,8 @@ public class ImageObject extends GameObject {
 	}
 
 	public void update() {
-		if (GameWindow.rightArrow) {
-			x++;
-		}
-		if (GameWindow.leftArrow) {
-			x--;
-		}
-		if (GameWindow.upArrow) {
-			y--;
-		}
-		if (GameWindow.downArrow) {
-			y++;
-		}
+		y = y + 2;
+		System.out.println(y + " y");
 	}
 
 }
