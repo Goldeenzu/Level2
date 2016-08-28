@@ -1,9 +1,12 @@
 package KnockOffDoddleJump;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
-public class ImageObject extends GameObject {
+public class ImageObject extends GameObject implements KeyListener{
 	BufferedImage image;
 
 	ImageObject(int x, int y, int width, int height) {
@@ -23,7 +26,27 @@ public class ImageObject extends GameObject {
 
 	public void update() {
 		y = y + 2;
-		System.out.println(y + " y");
+		if (y >= 700){
+			y = 0;
+			x = new Random().nextInt(401);
+		}
+}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -3,6 +3,8 @@ package KnockOffDoddleJump;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,7 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class GamePanel extends JPanel implements ActionListener {
+public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	boolean gameStarter = false;
 	Timer timer;
 	BufferedImage dogeImage;
@@ -29,7 +31,7 @@ public class GamePanel extends JPanel implements ActionListener {
 		
 		J = new Jumper(225, 450, 100, 100, dogeImage);
 		objects.add(J);
-		P = new Platform(new Random().nextInt(401), 0, 100, 30, doge2Image);
+		P = new Platform(new Random().nextInt(200), 0, 100, 30, doge2Image);
 		objects.add(P);
 	}
 	public void platformMoved(int platformY){
@@ -88,5 +90,22 @@ public class GamePanel extends JPanel implements ActionListener {
 		}
 		// image.update();
 		repaint();
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getKeyCode() == KeyEvent.VK_SPACE ){
+			J.jump();
+		}
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
