@@ -20,19 +20,23 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	BufferedImage doge2Image;
 	ImageObject image;
 	ImageObject image2;
+	boolean gameStart;
+	
 	Random r;
 
 	Jumper J;
 	Platform P;
 
 	ArrayList<GameObject> objects = new ArrayList<GameObject>();
-
+	ArrayList<Platform> platform = new ArrayList<Platform>();
+	
 	void intGameObjects() {
-		
+		gameStart = false;
 		J = new Jumper(225, 450, 100, 100, dogeImage);
 		objects.add(J);
 		P = new Platform(new Random().nextInt(200), 0, 100, 30, doge2Image);
 		objects.add(P);
+		platform.add(P);
 	}
 	public void platformMoved(int platformY){
 		P.y = platformY;
@@ -50,7 +54,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	public void paintComponent(Graphics g) {
 
-		if (gameStarter == true) {
+		if (gameStart == true) {
 			// image.draw(g);
 			// image2.draw(g);
 			for (int i = 0; i < objects.size(); i++) {
@@ -67,7 +71,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		intGameObjects();
 		timer = new Timer(1000 / 60, this);
 		timer.start();
-		gameStarter = true;
+		gameStart = true;
 	}
 
 	private void LoadImages() {
@@ -89,6 +93,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			g.update();
 		}
 		// image.update();
+		if(gameStart){
+			J.checkColision(platform);
+		}
 		repaint();
 	}
 	@Override
