@@ -4,9 +4,10 @@ import java.awt.Graphics;
 
 public class GameObject {
 	int x;
-	 int y;
+	int y;
 	int width;
 	int height;
+	boolean isColiding;
 
 	GameObject(int x, int y, int width, int height) {
 		this.x = x;

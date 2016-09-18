@@ -85,7 +85,7 @@ public class GameWindow implements MouseMotionListener, MouseListener {
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-		panel.mouseMoved(e.getX(), e.getY());
+		//panel.mouseMoved(e.getX(), e.getY());
 	}
 
 	

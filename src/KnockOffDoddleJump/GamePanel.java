@@ -41,15 +41,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void platformMoved(int platformY){
 		P.y = platformY;
 		P.update();
-		if(platformY >= 700){
-			platformY = 0;
-		}
 	}
 
-	public void mouseMoved(int mouseX, int mouseY) {
-		J.x = mouseX - 50;
-		System.out.println(mouseX);
-	}
+//	 public void mouseMoved(int mouseX, int mouseY) {
+//		J.x = mouseX - 50;
+//		System.out.println(mouseX);
+//	}
 	
 
 	public void paintComponent(Graphics g) {
@@ -109,10 +106,24 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		if(e.getKeyCode() == KeyEvent.VK_SPACE ){
 			J.jump();
 		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+			J.right = true;
+		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_LEFT){
+			J.left = true;
+		}
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+			J.right = false;
+		}
 		
+		if(e.getKeyCode() == KeyEvent.VK_LEFT){
+			J.left = false;
+		}
 	}
 }

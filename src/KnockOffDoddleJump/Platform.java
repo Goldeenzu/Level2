@@ -9,6 +9,13 @@ public class Platform extends ImageObject{
 		super(x, y, width, height, image);
 		// TODO Auto-generated constructor stub
 		colisionBox = new Rectangle(x, y, width, height);
-	
+		
 }
+	 public void update(){
+		y += 2;
+		if(y >= 700){
+			y = 0;
+		}
+		colisionBox.setBounds(x, y, width, height);
+	}
 }
