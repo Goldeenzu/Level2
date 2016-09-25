@@ -42,6 +42,31 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		P.y = platformY;
 		P.update();
 	}
+	
+	public void addPlatform(){
+		Platform p = new Platform(new Random().nextInt(200), 0, 100, 30, doge2Image);
+		objects.add(p);
+		platform.add(p);
+	}
+	
+	public void removePlatform(){
+		for(int i = 0; i < objects.size(); i++){
+			GameObject p = objects.get(i);
+			if(p.y >= 700 && p instanceof Platform){
+				objects.remove(p);
+				platform.remove(p);
+			}
+		}
+
+	}
+	
+	public void updatePlatform(){
+		int x = new Random().nextInt(100);
+		if(x == 0) {
+			addPlatform();
+		}
+		removePlatform();
+	}
 
 //	 public void mouseMoved(int mouseX, int mouseY) {
 //		J.x = mouseX - 50;
@@ -52,8 +77,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void paintComponent(Graphics g) {
 
 		if (gameStart == true) {
-			// image.draw(g);
-			// image2.draw(g);
 			for (int i = 0; i < objects.size(); i++) {
 				GameObject gg = objects.get(i);
 				gg.draw(g);
@@ -63,8 +86,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	public void startGame() {
 		LoadImages();
-		// image = new ImageObject(50, 50, 100, 100, dogeImage);
-		// image2 = new ImageObject(160, 50, 100, 100, doge2Image);
 		intGameObjects();
 		timer = new Timer(1000 / 60, this);
 		timer.start();
@@ -89,11 +110,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			GameObject g = objects.get(i);
 			g.update();
 		}
-		// image.update();
 		if(gameStart){
 			J.checkColision(platform);
 		}
 		repaint();
+		updatePlatform();
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {

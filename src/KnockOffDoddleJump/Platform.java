@@ -13,9 +13,6 @@ public class Platform extends ImageObject{
 }
 	 public void update(){
 		y += 2;
-		if(y >= 700){
-			y = 0;
-		}
 		colisionBox.setBounds(x, y, width, height);
 	}
 }

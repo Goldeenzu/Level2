@@ -19,8 +19,10 @@ Jumper(int x, int y, int width, int height, BufferedImage image) {
 	}
 	public void update(){
 		super.update();
+		
 		nextX = x;
 		nextY = y;
+		
 		if(y + height >= GameWindow.height){
 			y= GameWindow.height - height;
 		}
@@ -40,23 +42,24 @@ Jumper(int x, int y, int width, int height, BufferedImage image) {
 		}
 		nextX = x + xVelocity;
 		nextY = y + cVelocity;
-		colisionBox.setBounds(nextX, nextY, width, height);
+		
 		if(isColiding == false){
 			x = nextX;
 			y = nextY;
+			//colisionBox.setBounds(nextX, nextY, width, height);
 		}
 		else{
 			x -= xVelocity;
 			y -= cVelocity;
-			colisionBox.setBounds(x, x, width, height);
+			//colisionBox.setBounds(x, x, width, height);
 		}
 	}
 	
 	public void checkColision(ArrayList<Platform> platform){
+		System.out.println(platform.size());
 		for(Platform p : platform){
 			if(colisionBox.intersects(p.getCBox())){
 				isColiding = true;
-				System.out.println("jsfhsufhuefh");
 			}
 			else{
 				isColiding = false;
@@ -64,8 +67,9 @@ Jumper(int x, int y, int width, int height, BufferedImage image) {
 			}
 		}
 	public void jump(){
-		if(isColiding == false){
+		if(isColiding == true || y >=500){
 		cVelocity = jump;
 		}
+		
 	}
 }
