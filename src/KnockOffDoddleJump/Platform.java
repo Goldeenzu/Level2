@@ -15,4 +15,16 @@ public class Platform extends ImageObject{
 		y += 2;
 		colisionBox.setBounds(x, y, width, height);
 	}
+	 public int getY()
+	 {
+		 return y;
+	 }
+	 public int getX()
+	 {
+		 return x;
+	 }
+	 public int getWidth()
+	 {
+		 return width;
+	 }
 }

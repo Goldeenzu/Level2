@@ -44,7 +44,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	public void addPlatform(){
-		Platform p = new Platform(new Random().nextInt(200), 0, 100, 30, doge2Image);
+		Platform p = new Platform(new Random().nextInt(700), 0, 100, 30, doge2Image);
 		objects.add(p);
 		platform.add(p);
 	}
