@@ -21,6 +21,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	ImageObject image;
 	ImageObject image2;
 	boolean gameStart;
+	int platformChance = 2;
 	
 	Random r;
 
@@ -34,7 +35,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		gameStart = false;
 		J = new Jumper(225, 450, 100, 100, dogeImage);
 		objects.add(J);
-		P = new Platform(new Random().nextInt(200), 0, 100, 30, doge2Image);
+		P = new Platform(new Random().nextInt(600), 0, 100, 30, doge2Image);
 		objects.add(P);
 		platform.add(P);
 	}
@@ -61,17 +62,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	public void updatePlatform(){
-		int x = new Random().nextInt(100);
+		platformChance = platformChance * platformChance;
+		int x = new Random().nextInt(100/platformChance);
+
 		if(x == 0) {
 			addPlatform();
 		}
 		removePlatform();
 	}
-
-//	 public void mouseMoved(int mouseX, int mouseY) {
-//		J.x = mouseX - 50;
-//		System.out.println(mouseX);
-//	}
 	
 
 	public void paintComponent(Graphics g) {
